@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# This script runs after 'chezmoi apply' to ensure system packages are installed.
+# It reads from ~/.local/share/chezmoi/packages.txt
+
+packages_file="$HOME/.local/share/chezmoi/packages.txt"
+
+if [ -f "$packages_file" ]; then
+    echo "Checking for missing packages from $packages_file..."
+    
+    # Check for paru or yay
+    if command -v paru &> /dev/null; then
+        helper="paru"
+    elif command -v yay &> /dev/null; then
+        helper="yay"
+    else
+        echo "Error: Neither 'paru' nor 'yay' found. Cannot install packages."
+        exit 1
+    fi
+
+    # Read packages and install
+    # --needed skips already installed packages
+    # We use xargs to pass the list to the helper
+    if [ -s "$packages_file" ]; then
+         $helper -S --needed --noconfirm - < "$packages_file"
+    else
+         echo "Package list is empty."
+    fi
+else
+    echo "No packages.txt found at $packages_file"
+fi
