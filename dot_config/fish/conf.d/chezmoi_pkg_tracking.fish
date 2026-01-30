@@ -8,9 +8,19 @@ function __chezmoi_update_pkg_list --on-event fish_postexec
         # Check if command looks like a package manager operation
         if string match -q -r '\b(pacman|paru)\b' -- $cmd
             # Only update if we are actually installing, removing or upgrading
-            # simple heuristic: if it contains -S, -R, -U or just 'paru' (which acts as -Syu)
             if string match -q -r '(-[SRU]|paru)' -- $cmd
-                 pacman -Qqe > ~/.local/share/chezmoi/packages.txt
+                # Define paths
+                set -l pkg_file ~/.local/share/chezmoi/packages.txt
+                set -l sys_pkg_file ~/.local/share/chezmoi/sys_packages.txt
+
+                # Generate user package list
+                # If sys_packages.txt exists, filter against it (installed - system = user)
+                if test -f $sys_pkg_file
+                    pacman -Qqe | grep -vxFf $sys_pkg_file > $pkg_file
+                else
+                    # Fallback: dump everything if no baseline exists
+                    pacman -Qqe > $pkg_file
+                end
             end
         end
     end

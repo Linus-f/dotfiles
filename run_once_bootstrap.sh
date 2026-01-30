@@ -4,7 +4,29 @@
 
 echo "Running one-time bootstrap setup..."
 
-# --- 0. Network & Secrets Setup ---
+# --- 0. System Prep (Repos) ---
+
+# Optimize CachyOS Mirrors
+if command -v cachyos-rate-mirrors &> /dev/null; then
+    echo "Optimizing CachyOS mirrors..."
+    sudo cachyos-rate-mirrors
+fi
+
+# Ensure Cider Collective repository is present
+if [ -f /etc/pacman.conf ] && ! grep -q "\[cidercollective\]" /etc/pacman.conf; then
+    echo "Adding Cider Collective repository..."
+    cat <<EOF | sudo tee -a /etc/pacman.conf
+
+# Cider Collective Repository
+[cidercollective]
+SigLevel = Required TrustedOnly
+Server = https://repo.cider.sh/arch
+EOF
+    echo "Refreshing pacman database..."
+    sudo pacman -Sy
+fi
+
+# --- 1. Network & Secrets Setup ---
 
 # Tailscale Setup
 if ! command -v tailscale &> /dev/null; then
@@ -99,6 +121,18 @@ if pidof systemd &> /dev/null; then
     sudo systemctl enable --now bluetooth.service 2>/dev/null || true
     # fstrim is good for SSDs
     sudo systemctl enable --now fstrim.timer 2>/dev/null || true
+    
+    # Enable sched-ext (scx) if installed
+    if command -v scx_lavd &> /dev/null || pacman -Qs scx-scheds &> /dev/null; then
+        echo "Enabling scx (sched-ext) scheduler..."
+        sudo systemctl enable --now scx 2>/dev/null || true
+    fi
+
+    # Enable ananicy-cpp if installed
+    if systemctl list-unit-files | grep -q ananicy-cpp.service; then
+        echo "Enabling ananicy-cpp..."
+        sudo systemctl enable --now ananicy-cpp 2>/dev/null || true
+    fi
 fi
 
 # 4. Install Mise tools

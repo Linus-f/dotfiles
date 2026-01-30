@@ -52,7 +52,7 @@ binds {
     MOD+ALT+L                           hotkey-overlay-title="Lock Screen: swaylock" { spawn-sh "swaylock"; }
     
     // Please choose your own file manager
-    MOD+E                             hotkey-overlay-title="File Manager: Nautilus" { spawn-sh "nautilus"; }
+    MOD+E                             hotkey-overlay-title="File Manager: Dolphin" { spawn-sh "dolphin"; }
 
     // ─── Audio Controls ───
     // Example volume keys mappings for PipeWire & WirePlumber.
@@ -177,6 +177,7 @@ binds {
     spawn-sh-at-startup "swww-daemon" // Wallpaper daemon
     spawn-sh-at-startup "swww img /usr/share/wallpapers/cachyos-wallpapers/Skyscraper.png" // Set wallpaper
     spawn-sh-at-startup "waybar" // Launch waybar
+    spawn-sh-at-startup "xhost +SI:localuser:root" // Allow root apps (like gparted)
 
     prefer-no-csd // Disable program decorations
     screenshot-path null // Disable screenshot saving
@@ -266,6 +267,7 @@ binds {
         ELECTRON_OZONE_PLATFORM_HINT "auto"
         QT_QPA_PLATFORM "wayland"
         QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+        QT_QPA_PLATFORMTHEME "qt6ct"
         XDG_SESSION_TYPE "wayland"
         XDG_CURRENT_DESKTOP "niri"
     }
