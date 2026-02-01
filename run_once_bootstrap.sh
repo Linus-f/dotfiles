@@ -121,7 +121,17 @@ if command -v gsettings &> /dev/null; then
     gsettings set org.gnome.desktop.interface gtk-theme 'cachyos-nord'
 fi
 
-# 3. Enable standard services (idempotent, safe to run multiple times)
+# 3. Configure SDDM Theme (sugar-dark)
+if [ -d /etc/sddm.conf.d ]; then
+    CURRENT_THEME=$(grep "Current=" /etc/sddm.conf.d/theme.conf 2>/dev/null | cut -d= -f2)
+    if [ "$CURRENT_THEME" != "sugar-dark" ]; then
+        echo "Configuring SDDM theme to sugar-dark..."
+        sudo mkdir -p /etc/sddm.conf.d
+        echo -e "[Theme]\nCurrent=sugar-dark" | sudo tee /etc/sddm.conf.d/theme.conf > /dev/null
+    fi
+fi
+
+# 4. Enable standard services (idempotent, safe to run multiple times)
 # Check if systemd is active
 if pidof systemd &> /dev/null; then
     echo "Enabling common services..."
