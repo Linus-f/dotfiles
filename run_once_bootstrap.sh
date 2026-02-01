@@ -89,9 +89,10 @@ if command -v rbw &> /dev/null; then
         echo "Logging into Vaultwarden..."
         echo "Please enter your Master Password when prompted."
         rbw login
-        # Sync to ensure we have the latest secrets
-        rbw sync
     fi
+    # Always sync to ensure we have the latest secrets (like the SSH key)
+    echo "Syncing Vaultwarden..."
+    rbw sync
 fi
 
 # --- End Network & Secrets Setup ---
