@@ -15,6 +15,12 @@ fi
 # Ensure Cider Collective repository is present
 if [ -f /etc/pacman.conf ] && ! grep -q "\[cidercollective\]" /etc/pacman.conf; then
     echo "Adding Cider Collective repository..."
+    
+    # Import and sign the GPG key
+    echo "Importing Cider Collective GPG key..."
+    curl -s https://repo.cider.sh/ARCH-GPG-KEY | sudo pacman-key --add -
+    sudo pacman-key --lsign-key A0CD6B993438E22634450CDD2A236C3F42A61682
+
     cat <<EOF | sudo tee -a /etc/pacman.conf
 
 # Cider Collective Repository
