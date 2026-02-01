@@ -1,1 +1,5 @@
+{{ if lookPath "rbw" }}
 {{ (rbw "SSH_KEY").notes }}
+{{ else }}
+# rbw not installed yet. Run chezmoi apply again after installation.
+{{ end }}
