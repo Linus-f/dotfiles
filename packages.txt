@@ -2,6 +2,7 @@ atuin
 bitwarden
 cachyos-gaming-applications
 cachyos-gaming-meta
+cachyos-niri-noctalia
 chezmoi
 cider
 discord
@@ -13,10 +14,12 @@ gimp
 gnome-keyring
 gparted
 jujutsu
+libreoffice-fresh
 localsend
 mise
 navi
 neovim
+noctalia-shell
 obsidian
 pika-backup
 proton-vpn-gtk-app

@@ -128,6 +128,8 @@ alias cd="z"
 alias fr="source ~/.config/fish/config.fish"
 
 # environment variables
+set -gx EDITOR nvim
+set -gx VISUAL nvim
 export PATH="$PATH:~/.dotnet/tools"
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 # Force MKL to use the AVX2 path regardless of CPU vendor
