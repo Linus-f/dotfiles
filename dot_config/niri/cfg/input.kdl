@@ -4,7 +4,8 @@
 input {
     keyboard {
         xkb {
-            layout "de" // Use the German keyboard layout
+            layout "eu"
+            options "caps:escape"
         }
         numlock // Enable numlock on startup
     }
@@ -14,6 +15,6 @@ input {
         natural-scroll // Enable natural (macOS-style) scrolling
     }
 
-    focus-follows-mouse // Automatically focus windows under the mouse pointer
+    focus-follows-mouse max-scroll-amount="0%"
     workspace-auto-back-and-forth // Enable workspace back & forth switching
 }

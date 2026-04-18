@@ -128,12 +128,15 @@ alias cd="z"
 alias fr="source ~/.config/fish/config.fish"
 
 # environment variables
+export XDG_MENU_PREFIX="arch-"
 set -gx EDITOR nvim
 set -gx VISUAL nvim
 export PATH="$PATH:~/.dotnet/tools"
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 # Force MKL to use the AVX2 path regardless of CPU vendor
 export MKL_DEBUG_CPU_TYPE=5
+
+export GTEST_COLOR=1
 
 fish_ssh_agent
 

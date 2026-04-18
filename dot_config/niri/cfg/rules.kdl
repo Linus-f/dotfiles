@@ -12,3 +12,6 @@
         match namespace="^noctalia-wallpaper*"
         place-within-backdrop true
     }
+
+    window-rule {
+    }
