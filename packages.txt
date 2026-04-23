@@ -51,6 +51,7 @@ cryptsetup
 device-mapper
 diffutils
 discord
+<<<<<<< HEAD
 dmidecode
 dmraid
 dnsmasq
@@ -73,6 +74,14 @@ ffmpegthumbnailer
 figlet
 freecad
 fsarchiver
+=======
+docker
+docker-compose
+dolphin
+element-desktop
+freecad
+freerdp
+>>>>>>> 83a0ddb (Sync all changes from linuslinux)
 gemini-cli
 ghostty
 gimp
@@ -80,6 +89,7 @@ git
 glances
 gnome-keyring
 gparted
+<<<<<<< HEAD
 gst-libav
 gst-plugin-pipewire
 gst-plugins-bad
@@ -93,6 +103,10 @@ iptables
 iwd
 jetbrains-toolbox
 jfsutils
+=======
+haruna
+iptables
+>>>>>>> 83a0ddb (Sync all changes from linuslinux)
 jujutsu
 libreoffice-fresh
 less
@@ -132,12 +146,16 @@ meld
 mesa-utils
 micro
 mise
+<<<<<<< HEAD
 mkinitcpio
 modemmanager
 modrinth-app-bin
 mtools
 nano
 nano-syntax-highlighting
+=======
+mtr
+>>>>>>> 83a0ddb (Sync all changes from linuslinux)
 navi
 neovim
 noctalia-shell
@@ -173,6 +191,7 @@ poppler-glib
 power-profiles-daemon
 proton-vpn-gtk-app
 protonmail-bridge
+<<<<<<< HEAD
 pv
 python
 python-defusedxml
@@ -187,22 +206,37 @@ s-nail
 satty
 scribus
 sddm
+=======
+python-pyqt6
+qt6-wayland
+qt6ct
+rbw
+remmina
+>>>>>>> 83a0ddb (Sync all changes from linuslinux)
 sddm-sugar-dark
 sddm-theme-noctalia-git
 seahorse
 sg3_utils
 signal-desktop
+<<<<<<< HEAD
 smartmontools
 snapper
 sof-firmware
 steam
 subversion
 sudo
+=======
+skopeo
+speedtest-cli
+steam
+subversion
+>>>>>>> 83a0ddb (Sync all changes from linuslinux)
 superslicer-bin
 sysfsutils
 tailscale
 texinfo
 thunderbird
+<<<<<<< HEAD
 ttf-bitstream-vera
 ttf-dejavu
 ttf-liberation
@@ -229,6 +263,10 @@ xdg-desktop-portal-wlr
 xdg-user-dirs
 xfsprogs
 xl2tpd
+=======
+velo-bin
+xdg-desktop-portal-kde
+>>>>>>> 83a0ddb (Sync all changes from linuslinux)
 xorg-xhost
 xsel
 zed
