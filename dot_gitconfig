@@ -8,3 +8,5 @@
 	gpgsign = true
 [core]
     editor = nvim
+[pull]
+	rebase = true
